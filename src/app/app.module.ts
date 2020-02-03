@@ -20,7 +20,6 @@ import { SecondPageModule } from './second-page/second-page.module';
 @NgModule({
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
     HttpClientModule,
     TranslateModule.forRoot(),
