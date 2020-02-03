@@ -7,3 +7,9 @@ q {
   font-size: 1.2rem;
   quotes: "« " " »";
 }
+button {
+  &.active {
+    border: #6f42c1 solid 1px;
+    background-color: #e83e8c;
+  }
+}

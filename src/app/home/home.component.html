@@ -1,10 +1,53 @@
 <div class="container-fluid">
-  <div class="jumbotron text-center">
-    <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-      <span translate>Hello world !</span>
-    </h1>
-    <app-loader [isLoading]="isLoading"></app-loader>
-    <q [hidden]="isLoading">{{ quote }}</q>
+  <app-loader [isLoading]="isLoading"></app-loader>
+  <div class="row">
+    <div class="col-12">
+      <h3>Options for charts</h3>
+      <button *ngIf="!isOnlineOnly" (click)="findOnline()" translate>{{ 'Active filtered' }}</button>
+      <button *ngIf="isOnlineOnly" (click)="createChart()" translate>{{ 'All filtered' }}</button>
+      <button (click)="allUsersShow()" translate>{{ 'All users' }}</button>
+      <button (click)="findOnline()" translate>{{ 'Resset' }}</button>
+
+      <button
+        [class.active]="ammount === activeAmount"
+        *ngFor="let ammount of ammounts"
+        (click)="moreLessElements(ammount)"
+      >
+        {{ ammount }}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div style="display: block;">
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+        ></canvas>
+      </div>
+    </div>
+    <div class="col-6">
+      <div style="display: block;">
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend"
+        >
+        </canvas>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { extract } from '@app/core';
-import { HomeComponent } from './home.component';
 import { Shell } from '@app/shell/shell.service';
-import { QuoteService } from '@app/home/quote.service';
+import { SecondPageComponent } from '@app/second-page/second-page.component';
 
 const routes: Routes = [
-  Shell.childRoutes([
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent, data: { title: extract('Home') } }
-  ])
+  Shell.childRoutes([{ path: 'second-page', component: SecondPageComponent, data: { title: extract('Second page') } }])
 ];
 
 @NgModule({
@@ -18,4 +13,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class HomeRoutingModule {}
+export class SecondPageRoutingModule {}
