@@ -1,79 +1,87 @@
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.index}} </td>
+    <td mat-cell *matCellDef="let element"> {{element?.index}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name
+    <th mat-header-cell *matHeaderCellDef> Name
       <input
+        style= "width: 50%;"
+        [(ngModel)]="nameInput"
+        (ngModelChange)="changed()"
         type="text"
         class="form-control"
-        formControlName="username"
         autocomplete="username"
-        [placeholder]="'Username' | translate"
+        [placeholder]="'Name' | translate"
       />
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="gender">
     <th mat-header-cell *matHeaderCellDef> Gender </th>
-    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    <td mat-cell *matCellDef="let element"> {{element?.gender}} </td>
   </ng-container>
 
   <ng-container matColumnDef="active">
-    <th mat-header-cell *matHeaderCellDef > Is Active </th>
-    <td mat-cell *matCellDef="let element"> {{element.isActive}} </td>
+    <th mat-header-cell *matHeaderCellDef > Is Active
+      <br><button (click)="setIsActive()">Active</button>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element?.isActive}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="company">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
-    <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+    <td mat-cell *matCellDef="let element"> {{element?.company}} </td>
   </ng-container>
 
   <ng-container matColumnDef="balance">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance </th>
-    <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
+    <td mat-cell *matCellDef="let element"> {{element?.balance}} </td>
   </ng-container>
 
   <ng-container matColumnDef="tags">
     <th mat-header-cell *matHeaderCellDef> Tags
       <input
+        style= "width: 50%;"
+        [(ngModel)]="tagsInput"
+        (ngModelChange)="changed()"
         type="text"
         class="form-control"
-        formControlName="username"
         autocomplete="username"
-        [placeholder]="'Username' | translate"
+        [placeholder]="'Tags' | translate"
       />
     </th>
     <td mat-cell *matCellDef="let element"> <span *ngFor="let tag of element.tags"> {{tag}} | </span></td>
   </ng-container>
 
   <ng-container matColumnDef="friends">
-    <th mat-header-cell *matHeaderCellDef> Friends                 <input
-      type="text"
-      class="form-control"
-      formControlName="username"
-      autocomplete="username"
-      [placeholder]="'Username' | translate"
-    /></th>
+    <th mat-header-cell *matHeaderCellDef> Friends
+      <input
+        style= "width: 50%;"
+        [(ngModel)]="friendsInput"
+        (ngModelChange)="changed()"
+        type="text"
+        class="form-control"
+        autocomplete="username"
+        [placeholder]="'Friends' | translate"
+      /></th>
     <td mat-cell *matCellDef="let element"> <span *ngFor="let tag of element.friends"> {{tag.name}} | </span></td>
   </ng-container>
 
   <ng-container matColumnDef="registered">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Register </th>
-    <td mat-cell *matCellDef="let element"> {{element.registered}} </td>
+    <td mat-cell *matCellDef="let element"> {{dateFunc(element.registered) | date: 'yyy-LLLL-dd hh:mm'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="picture">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Picture </th>
-    <td mat-cell *matCellDef="let element"> <img style="border-radius: 90px" [src]="element.picture"/> </td>
+    <td mat-cell *matCellDef="let element"> <img [ngStyle]="{'border': '3px solid'}" style="border-radius: 90px;" [src]="element.picture"/> </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -168,7 +168,6 @@ export class HomeComponent implements OnInit {
     if (this.sorted.length) {
       this.sorted.forEach((elem: any) => {
         if (elem.isActive) {
-          console.log(elem, 'elem', this.sorted);
           let value = parseFloat(elem.balance.substr(1).replace(',', ''));
           this.chartsData.push({ data: [0, value], label: elem.company });
         }
