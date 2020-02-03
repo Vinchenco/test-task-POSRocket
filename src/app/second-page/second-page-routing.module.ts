@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { extract } from '@app/core';
 import { Shell } from '@app/shell/shell.service';
-import { SecondPageComponent } from '@app/second-page/second-page.component';
+import { SecondPageComponent } from './second-page.component';
 
 const routes: Routes = [
   Shell.childRoutes([{ path: 'second-page', component: SecondPageComponent, data: { title: extract('Second page') } }])

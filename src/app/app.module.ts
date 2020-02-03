@@ -15,7 +15,7 @@ import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SecondPageModule } from '@app/second-page/second-page.module';
+import { SecondPageModule } from './second-page/second-page.module';
 
 @NgModule({
   imports: [
