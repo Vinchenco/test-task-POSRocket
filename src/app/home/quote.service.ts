@@ -19,6 +19,6 @@ export class QuoteService {
   constructor(private httpClient: HttpClient) {}
 
   getGraphs(): Observable<any> {
-    return this.httpClient.get('http://9e894.mocklab.io/search');
+    return this.httpClient.get('https://9e894.mocklab.io/search');
   }
 }
