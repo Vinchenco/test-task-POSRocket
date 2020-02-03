@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   isLoading = false;
   ammounts = [5, 10, 20];
   isOnlineOnly = false;
-  activeAmount = null;
+  activeAmount: any = null;
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     },
     plugins: {
       datalabels: {
-        formatter: (value, ctx) => {
+        formatter: (value: any, ctx: any) => {
           const label = ctx.chart.data.labels[ctx.dataIndex];
           return label;
         }
@@ -129,7 +129,7 @@ export class HomeComponent implements OnInit {
   }
 
   public findReachPerson(allUsers: any) {
-    this.sorted = allUsers.sort((a, b) => {
+    this.sorted = allUsers.sort((a: any, b: any) => {
       return parseFloat(b.balance.substr(1).replace(',', '')) - parseFloat(a.balance.substr(1).replace(',', ''));
     });
     console.log(this.sorted);
@@ -143,7 +143,7 @@ export class HomeComponent implements OnInit {
     this.lineChartData = [];
     this.chartsData = [];
     if (this.sorted.length) {
-      this.sorted.forEach(elem => {
+      this.sorted.forEach((elem: any) => {
         console.log(elem, 'elem', this.sorted);
         let value = parseFloat(elem.balance.substr(1).replace(',', ''));
         this.chartsData.push({ data: [0, value], label: elem.company, gender: elem.gender });
@@ -166,7 +166,7 @@ export class HomeComponent implements OnInit {
     this.chartsData = [];
     this.isOnlineOnly = true;
     if (this.sorted.length) {
-      this.sorted.forEach(elem => {
+      this.sorted.forEach((elem: any) => {
         if (elem.isActive) {
           console.log(elem, 'elem', this.sorted);
           let value = parseFloat(elem.balance.substr(1).replace(',', ''));
@@ -187,7 +187,7 @@ export class HomeComponent implements OnInit {
   public setGender() {
     this.pieChartData = [0, 0];
     this.lineChartData.forEach(elem => {
-      if (elem.gender === 'female') {
+      if (elem['gender'] === 'female') {
         this.pieChartData[0] = this.pieChartData[0] + 1;
       } else {
         this.pieChartData[1] = this.pieChartData[1] + 1;
